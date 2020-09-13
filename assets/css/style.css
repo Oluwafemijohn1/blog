@@ -282,14 +282,14 @@ header  .logo-text span{
     width: 40%;
     height: 100%;
     float: left;
-    border: 2px solid rgb(255, 251, 0);
+    
 }
 
 .content .main-content .post .post-preview{
     width: 60%;
     padding: 10px;
     float: right;
-    border: 1px solid green;
+    
 }
 .content .main-content .recent-post-title{
     margin: 20px;
@@ -302,7 +302,7 @@ header  .logo-text span{
     border-radius: 5px;
     background: white;
     position: relative;
-    border: 1px solid red;
+    
 }
 .content .main-content .post .read-more{
     position: absolute;
