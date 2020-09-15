@@ -21,7 +21,18 @@ if (isset($_POST['register-btn'])) {
         $user = selectOne('u', ['id' => $user_id]);
 
         // log user in
-
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['names'] = $user['names'];
+        $_SESSION['isAdmin'] = $user['isAdmin'];
+        $_SESSION['message'] = 'You are now logged in';
+        $_SESSION['type'] = 'success';
+        header('location:' . BASE_URL . '/index.php');
+        if($_SESSION['isAdmin']){
+            header('location:' . BASE_URL . '/admin/dashboard.php');
+        }else{
+            header('location:' . BASE_URL . '/index.php');
+        }
+        exit();
     } else {
         $names = $_POST['names'];
         $email = $_POST['email'];
@@ -30,5 +41,28 @@ if (isset($_POST['register-btn'])) {
     }
     
     
+}
+
+if(isset($_POST['login-btn'])){
+    $errors = validateLogin($_POST);
+    if (count($errors) === 0){
+        $user = selectOne('u', ['names' => $_POST['names']]);
+        if ($user && password_verify($_POST['password'], $user['password'])){
+            $_SESSION['id'] = $user['id'];
+        $_SESSION['names'] = $user['names'];
+        $_SESSION['isAdmin'] = $user['isAdmin'];
+        $_SESSION['message'] = 'You are now logged in';
+        $_SESSION['type'] = 'success';
+        header('location:' . BASE_URL . '/index.php');
+        if($_SESSION['isAdmin']){
+            header('location:' . BASE_URL . '/admin/dashboard.php');
+        }else{
+            header('location:' . BASE_URL . '/index.php');
+        }
+        exit();
+        }else{
+            array_push($errors, 'Wrong login credentials');
+        }
+    }
 }
 

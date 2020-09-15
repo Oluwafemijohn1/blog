@@ -1,4 +1,7 @@
-<?php include("path.php"); ?>
+<?php 
+include("path.php");
+include(ROOT_PATH . '/app/database/db.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,7 @@
 
     <!-- TODO: INCLUDE -->
     <?PHP include(ROOT_PATH."/app/include/header.php"); ?>
-
+    <?PHP include(ROOT_PATH."/app/include/messages.php"); ?>
     <!-- page wrapper -->
     <div class="page-wrapper">
         <!-- post slider -->

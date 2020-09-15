@@ -1,4 +1,5 @@
 <?php include("path.php"); ?>
+<?php include(ROOT_PATH . '/app/controllers/users.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,7 @@
     <div class="auth-content">
         <form action="login.php" method="post">
             <h2 class="form-title">Login</h2>
+            <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
 
             <div>
                 <label for="">Username</label>
