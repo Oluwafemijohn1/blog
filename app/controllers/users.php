@@ -64,5 +64,7 @@ if(isset($_POST['login-btn'])){
             array_push($errors, 'Wrong login credentials');
         }
     }
+    $names = $_POST['names'];
+    $password = $_POST['password'];
 }
 

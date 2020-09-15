@@ -25,14 +25,14 @@
 
             <div>
                 <label for="">Username</label>
-                <input type="text" name="username" class="text-input">
+                <input type="text" name="names" value="<?php echo $names; ?>" class="text-input">
             </div>
 
             
 
             <div>
                 <label for="">Password</label>
-                <input type="password" name="password" class="text-input">
+                <input type="password" name="password" value="<?php echo $password; ?>" class="text-input">
             </div>
 
            
