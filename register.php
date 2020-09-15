@@ -1,4 +1,7 @@
 <?php include("path.php"); ?>
+<?php 
+include(ROOT_PATH . '/app/controllers/users.php')
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,27 +23,26 @@
     <div class="auth-content">
         <form action="register.php" method="post">
             <h2 class="form-title">Register</h2>
-            <!-- <div class="msg success error">
-                <li>Username required</li>
-            </div> -->
+
+           <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
             <div>
                 <label for="">Username</label>
-                <input type="text" name="username" class="text-input">
+                <input type="text" value="<?php echo $names; ?>" name="names" class="text-input">
             </div>
 
             <div>
                 <label for="">Email</label>
-                <input type="email" name="email" class="text-input">
+                <input type="email" value="<?php echo $email; ?>" name="email" class="text-input">
             </div>
 
             <div>
                 <label for="">Password</label>
-                <input type="password" name="password" class="text-input">
+                <input type="password" value="<?php echo $password; ?>" name="password" class="text-input">
             </div>
 
             <div>
                 <label for="">Password Confirmation</label>
-                <input type="password" name="passwordConf" class="text-input">
+                <input type="password" value="<?php echo $passwordConf; ?>" name="passwordConf" class="text-input">
             </div>
             <button type="submit" class="btn btn-big" name="register-btn">Register</button>
 

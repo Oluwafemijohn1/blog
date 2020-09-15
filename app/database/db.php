@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('connect.php');
 
 
@@ -76,9 +77,10 @@ function create($table, $data)
 {
     global $conn;
     // there two format for creating in php (u= users in thi project)
-    # $sql = "INSERT INTO users (username, admin, email, password) VALUES (?, ?, ?, ?)"
-    # $sql = "INSERT INTO users SET username=?, admin=?, email=?, password=?"
-    $sql = "INSERT INTO u SET ";
+    # 1 $sql = "INSERT INTO users (username, admin, email, password) VALUES (?, ?, ?, ?)"
+    # 2 $sql = "INSERT INTO users SET username=?, admin=?, email=?, password=?" 
+    // no was used in this project
+    $sql = "INSERT INTO $table SET ";
     $i =0;
     foreach($data as $key => $value){
         if ($i === 0){
@@ -93,13 +95,37 @@ function create($table, $data)
     return $id; 
 }
 
-$data = [
-    'isAdmin' => 1,
-    'email' => 'ssegrg@gmail.com',
-    'password'=> 4252242,
-    'names' => 'femsic222'
-];
+function update($table, $id,  $data)
+{
+    global $conn;
+  
+    # $sql = "UPDATE users SET username=?, admin=?, email=?, password=? WHERE id=?"
+    $sql = "UPDATE $table SET ";
+    $i =0;
+    foreach($data as $key => $value){
+        if ($i === 0){
+            $sql = $sql . " $key=?";
+        }else{
+            $sql = $sql . ", $key=?";
+        }
+        $i++;
+    }
+    $sql = $sql . " WHERE id=?";
+    $data['id'] = $id;
+    $stmt = executeQuery($sql, $data);    
+    return $stmt->affected_rows; 
+}
 
-$id = create('u', $data);
 
-dd($id);
+
+function delete($table, $id)
+{
+    global $conn;
+  
+    # $sql = "DELETE FROM users WHERE id=?"
+    $sql = "DELETE FROM $table WHERE id=?";      
+    $stmt = executeQuery($sql, ['id' => $id]);    
+    return $stmt->affected_rows; 
+}
+
+
