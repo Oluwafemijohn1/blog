@@ -1,5 +1,4 @@
 <?php include("../../path.php"); ?>
-<?php include(ROOT_PATH . '/app/controllers/topics.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
     <!-- Custome Styling -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/admin.css">
-    <title>Admin Section -Add Topic</title>
+    <title>Admin Section -Edit Users</title>
 </head>
 <body>
     <!-- Admin header here -->
@@ -28,24 +27,41 @@
     <!-- Admin content -->
     <div class="admin-content">
         <div class="buuton-group">
-            <a href="create.php" class="btn btn-big">Add Topic</a>
-            <a href="index.php" class="btn btn-big">Manage Topics</a>
+            <a href="create.php" class="btn btn-big">Add User</a>
+            <a href="index.php" class="btn btn-big">Manage Users</a>
         </div>
         <div class="content">
-            <h2 class="page-title">Add Topic</h2>
-            <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
+            <h2 class="page-title">Edit User</h2>
            <form action="create.php" method="post">
-               <div>
-                   <label for="">Name</label>
-                   <input type="text" name="title" id="" value="<?php echo $title; ?>" class="text-input">
-               </div>
-               <!-- <div>
-                    <label for="">Description</label>
-                    <textarea name="description" id="body" class="text-input"></textarea>
-                </div> -->
-                
+            <div>
+                <label for="">Username</label>
+                <input type="text" name="username" class="text-input">
+            </div>
+
+            <div>
+                <label for="">Email</label>
+                <input type="email" name="email" class="text-input">
+            </div>
+
+            <div>
+                <label for="">Password</label>
+                <input type="password" name="password" class="text-input">
+            </div>
+
+            <div>
+                <label for="">Password Confirmation</label>
+                <input type="password" name="passwordConf" class="text-input">
+            </div>
+            <div>
+                <label for="">Role</label>
+                <select name="role" id="" class="text-input">
+                    <option value="Author">Author</option>
+                    <option value="Admin">Admin</option>
+                  
+                </select>
+            </div>   
                 <div>
-                    <button type="submit" name="add-topic" class="btn btn-big">Add Topic</button>
+                    <button type="submit" class="btn btn-big">Update User</button>
                 </div>
            </form>
         </div>

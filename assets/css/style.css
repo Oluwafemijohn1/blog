@@ -60,6 +60,9 @@ a{
     border-radius: 5px;
     list-style: none;
 }
+.msg.index{
+    width: 60vw !important;
+}
 .success{
     color: #3a6e3a;
     border: 1px solid #3a6e3a;
@@ -95,13 +98,17 @@ header ul{
     margin: 0px;
     padding: 0px;
     list-style: none;
+    height: inherit;
 }
 
 header ul li{
     float: left;
     position: relative;
+    height: inherit;
 }
-
+header ul li a{
+    height: inherit;
+}
 header ul li ul{
     position: absolute;
     top: 66px;
@@ -119,14 +126,13 @@ header ul li ul li{
     width: 100%;
 }
 
-header ul li ul li a{
-    padding: 10px;
+header ul li ul li a{    
     background: #d5d6d6;
     color: #444;
 }
 
 header ul li ul li a.logout{
-    color: red;
+    color: red; 
 }
 
 header ul li a{

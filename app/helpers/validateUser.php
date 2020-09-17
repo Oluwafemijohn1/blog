@@ -17,7 +17,7 @@ function validateUser($user)
         array_push($errors, "Password do not match");
     }
     $existingUser = selectOne('u', ['email' => $user['email']]);
-    if (isset($existingUser)){
+    if($existingUser){
         array_push($errors, 'Email already exists');
     }
     return $errors;
@@ -27,8 +27,8 @@ function validateLogin($user)
 {
     
     $errors = array();
-    if (empty($user['names'])){
-        array_push($errors, "Username is required");
+    if (empty($user['email'])){
+        array_push($errors, "Email is required");
     }
   
     if (empty($user['password'])){

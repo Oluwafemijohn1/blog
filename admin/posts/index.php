@@ -1,3 +1,4 @@
+<?php include("../../path.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,47 +10,25 @@
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Candal&family=Lora&display=swap" rel="stylesheet">
     <!-- Custome Styling -->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
     <title>Admin Section -Manage Posts</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1 class="logo-text"><span>Ephemzy</span>Inspires</h1>
-        </div>
-        <i class="fa fa-bars menu-toggle"></i>
-        <ul class="nav">
-            
-            <li><a href="#">
-                <i class="fa fa-user"></i>
-                Oluwafemi Ogundipe
-            <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
-            </a>
-                <ul>
-                    
-                    <li><a href="" class="logout">Logout</a></li>  
-                </ul>
-                          
-            </li>            
-        </ul>
-    </header>
+    <!-- Admin header here -->
+    <?php include(ROOT_PATH . "/app/include/adminHeader.php"); ?>
+
     <!-- admin page wrapper -->
     <div class="admin-wrapper1 clearfix">
     <!-- Left sidebar -->
-    <div class="left-sidebar">
-        <ul>
-            <li><a href="index.html">Manage Posts</a></li>
-            <li><a href="../users/index.html">Manage Users</a></li>
-            <li><a href="../topics/index.html">Manage Topics</a></li>
-        </ul>
-    </div>
+    <?php include(ROOT_PATH . "/app/include/adminSidebar.php"); ?>
+
     <!-- //Left sidebar -->
     <!-- Admin content -->
     <div class="admin-content">
         <div class="buuton-group">
-            <a href="create.html" class="btn btn-big">Add Post</a>
-            <a href="index.html" class="btn btn-big">Manage Posts</a>
+            <a href="create.php" class="btn btn-big">Add Post</a>
+            <a href="index.php" class="btn btn-big">Manage Posts</a>
         </div>
         <div class="content">
             <h2 class="page-title">Manage Posts</h2>
@@ -98,7 +77,7 @@
 
    
     <!-- Custom Script -->
-    <script src="../../js/scripts.js"></script>
+    <script src="../../assets/js/scripts.js"></script>
 
 </body>
 </html>

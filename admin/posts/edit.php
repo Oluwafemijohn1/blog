@@ -1,5 +1,4 @@
 <?php include("../../path.php"); ?>
-<?php include(ROOT_PATH . '/app/controllers/topics.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
     <!-- Custome Styling -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/admin.css">
-    <title>Admin Section -Add Topic</title>
+    <title>Admin Section -Edit Post</title>
 </head>
 <body>
     <!-- Admin header here -->
@@ -28,24 +27,36 @@
     <!-- Admin content -->
     <div class="admin-content">
         <div class="buuton-group">
-            <a href="create.php" class="btn btn-big">Add Topic</a>
-            <a href="index.php" class="btn btn-big">Manage Topics</a>
+            <a href="create.php" class="btn btn-big">Add Post</a>
+            <a href="index.php" class="btn btn-big">Manage Posts</a>
         </div>
         <div class="content">
-            <h2 class="page-title">Add Topic</h2>
-            <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
+            <h2 class="page-title">Edit Post</h2>
            <form action="create.php" method="post">
                <div>
-                   <label for="">Name</label>
-                   <input type="text" name="title" id="" value="<?php echo $title; ?>" class="text-input">
+                   <label for="">Title</label>
+                   <input type="text" name="title" id="" class="text-input">
                </div>
-               <!-- <div>
-                    <label for="">Description</label>
-                    <textarea name="description" id="body" class="text-input"></textarea>
-                </div> -->
-                
+               <div>
+                    <label for="">Body</label>
+                    <textarea name="body" id="body" class="text-input"></textarea>
+                </div>
                 <div>
-                    <button type="submit" name="add-topic" class="btn btn-big">Add Topic</button>
+                    <label for="">
+                        <input type="file" name="image"  class="text-input">
+                    </label>
+                </div>
+                <div>
+                    <label for="">Topic</label>
+                    <select name="topic" id="" class="text-input">
+                        <option value="Poetry">Select topic</option>
+                        <option value="Poetry">Poetry</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Life Lessons">Life Lessons</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-big">Update Post</button>
                 </div>
            </form>
         </div>

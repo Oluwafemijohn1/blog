@@ -24,8 +24,8 @@
             <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
 
             <div>
-                <label for="">Username</label>
-                <input type="text" name="names" value="<?php echo $names; ?>" class="text-input">
+                <label for="">Email</label>
+                <input type="text" name="email" value="<?php echo $email; ?>" class="text-input">
             </div>
 
             
