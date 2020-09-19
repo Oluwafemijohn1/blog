@@ -33,14 +33,15 @@
         </div>
         <div class="content">
             <h2 class="page-title">Add Post</h2>
+            <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>
            <form action="create.php" method="post">
                <div>
                    <label for="">Title</label>
-                   <input type="text" name="title" id="" class="text-input">
+                   <input type="text" name="tittle" value="<?php echo $tittle; ?>" id="" class="text-input">
                </div>
                <div>
                     <label for="">Body</label>
-                    <textarea name="description" id="description" class="text-input"></textarea>
+                    <textarea name="description" id="description" class="text-input"><?php echo $description ?> </textarea>
                 </div>
                 <div>
                     <label for="">
@@ -49,15 +50,33 @@
                 </div>
                 <div>
                     <label for="">Topic</label>
-                    <select name="topic_id" id="" class="text-input">
-                        <option value="Poetry">Select topic</option>
+                    <select name="category" id="" class="text-input">
+                        <option value="">Select topic</option>
                         <?php foreach ($topics as $key => $topic): ?>
-                    
-                        <option value="<?php echo $topic['id']; ?>"><?php echo $topic['title']; ?></option>
+                            <?php if(!empty($topic_id) && $topic_id == $topic['id']): ?>
+                                <option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['title']; ?></option>
+                            <?php else: ?>
+                                <option value="<?php echo $topic['id']; ?>"><?php echo $topic['title']; ?></option>
+                            <?php endif; ?>
+                        
                         <?php endforeach;?> 
                         
                    
                     </select>
+                </div>
+                <div>
+                    <?php if(empty($published)): ?>
+                        <label for="">
+                            <input type="checkbox" name="published" id="" class="">
+                            Publish
+                        </label>
+                    <?php else: ?>
+                        <label for="">
+                            <input type="checkbox" name="published" id="" class="" checked>
+                            Publish
+                        </label>
+                    <?php endif; ?>
+                    
                 </div>
                 <div>
                     <button type="submit" name="add-post" class="btn btn-big">Add Post</button>

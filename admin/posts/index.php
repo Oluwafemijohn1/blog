@@ -1,4 +1,5 @@
 <?php include("../../path.php"); ?>
+<?php include(ROOT_PATH . '/app/controllers/posts.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,12 +27,13 @@
     <!-- //Left sidebar -->
     <!-- Admin content -->
     <div class="admin-content">
-        <div class="buuton-group">
+        <div class="button-group">
             <a href="create.php" class="btn btn-big">Add Post</a>
             <a href="index.php" class="btn btn-big">Manage Posts</a>
         </div>
         <div class="content">
             <h2 class="page-title">Manage Posts</h2>
+            <?php include(ROOT_PATH . '/app/include/messages.php') ?>
             <table>
                 <thead>
                     <th>SN</th>
@@ -40,30 +42,23 @@
                     <th colspan="3">Action</th>
                 </thead>
                 <tbody>
+                <?php foreach ($posts as $key => $post): ?>
                     <tr>
-                        <td>1</td>
-                        <td>This is the first post</td>
+                        <td><?php echo $key + 1; ?></td>
+                        <td><?php echo $post['tittle'] ?></td>
                         <td>Ephemzy</td>
                         <td><a href="#" class="edit">Edit</a></td>
                         <td><a href="#" class="delete">Delete</a</td>
+                        <?php if($post['published'] ): ?>
+                        <td><a href="#" class="publish">Unpublish</a</td>
+                        <?php else: ?>
                         <td><a href="#" class="publish">Publish</a</td>
+                        <?php endif; ?>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>This is the second post</td>
-                        <td>Ephemzy</td>
-                        <td><a href="#" class="edit">Edit</a></td>
-                        <td><a href="#" class="delete">Delete</a</td>
-                        <td><a href="#" class="publish">Publish</a</td>
-                    </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>This is the second post</td>
-                        <td>Ephemzy</td>
-                        <td><a href="#" class="edit">Edit</a></td>
-                        <td><a href="#" class="delete">Delete</a</td>
-                        <td><a href="#" class="publish">Publish</a</td>
-                    </tr>
+                    
+                <?php endforeach;?> 
+                    
+                    
                 </tbody>
             </table>
         </div>
