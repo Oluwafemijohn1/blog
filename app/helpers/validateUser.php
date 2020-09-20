@@ -16,10 +16,21 @@ function validateUser($user)
     if ($user['passwordConf'] !== $user['password']){
         array_push($errors, "Password do not match");
     }
-    $existingUser = selectOne('u', ['email' => $user['email']]);
+    // $existingUser = selectOne('u', ['email' => $user['email']]);
+    // if($existingUser){
+    //     array_push($errors, 'Email already exists');
+    // }
+
+    $existingUser= selectOne('u', ['email' => $user['email']]);
     if($existingUser){
-        array_push($errors, 'Email already exists');
+        if(isset($user['update-user']) && $existingUser['id'] != $user['id']){
+            array_push($errors, 'User with that email alreaddy exists');
+        }
+        if(isset($user['add-user'])){
+            array_push($errors, 'User with that email alreaddy exists');
+        }
     }
+    
     return $errors;
 }
 

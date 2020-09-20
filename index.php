@@ -2,6 +2,26 @@
 include("path.php");
 
 include(ROOT_PATH . '/app/controllers/topics.php'); 
+
+$posts = array();
+$postsTitle = 'Recent Posts';
+
+if(isset($_GET['t_id'])){
+    $posts = getPostsByTopicId($_GET['t_id']);
+    $postsTitle = "You searched for posts under '" . $_GET['title'] . "'";
+    // dd($postsTitle);
+}
+
+elseif(isset($_POST['search-term'])){
+    $postsTitle = "You searched for '" . $_POST['search-term'] . "'";
+    $posts = searchPosts($_POST['search-term']);
+}else{
+    $posts = getPublishedPost();
+}
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,58 +49,22 @@ include(ROOT_PATH . '/app/controllers/topics.php');
         <div class="post-slider">
             <h1 class="slider-title">Trending Posts</h1>
             <i class="fas fa-chevron-left prev"></i>
-            <i class="fas fa-chevron-right next"></i>    
+            <i class="fas fa-chevron-right next"></i>  
+            <?php include(ROOT_PATH . '/app/include/messages.php') ?>
             <div class="post-wrapper">
-
+                <?php foreach($posts as $post): ?>
                 <div class="post">
-                    <img src="assets/images/images(2).jpg" alt="" class="slider-image">
+                    <img src="<?php echo BASE_URL . '/assets/images/' . $post['image'] ?>" alt="" class="slider-image">
                     <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user">Oluwafemi Ogundipe</i>
+                        <h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['tittle']; ?></a></h4>
+                        <i class="far fa-user"><?php echo $post['names']; ?></i>
                         &nbsp;
-                        <i class="far fa-calender">Sep 4, 2020</i>
+                        <i class="far fa-calender"><?php echo date('F j, Y', strtotime($post['creationDate'])); ?></i>
                     </div>
-                </div>
 
-                <div class="post">
-                    <img src="assets/images/images(2).jpg" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user">Oluwafemi Ogundipe</i>
-                        &nbsp;
-                        <i class="far fa-calender">Sep 4, 2020</i>
-                    </div>
                 </div>
-
-                <div class="post">
-                    <img src="assets/images/images(2).jpg" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user">Oluwafemi Ogundipe</i>
-                        &nbsp;
-                        <i class="far fa-calender">Sep 4, 2020</i>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="assets/images/images(2).jpg" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user">Oluwafemi Ogundipe</i>
-                        &nbsp;
-                        <i class="far fa-calender">Sep 4, 2020</i>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <img src="assets/images/images(2).jpg" alt="" class="slider-image">
-                    <div class="post-info">
-                        <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-                        <i class="far fa-user">Oluwafemi Ogundipe</i>
-                        &nbsp;
-                        <i class="far fa-calender">Sep 4, 2020</i>
-                    </div>
-                </div>
+                <?php endforeach; ?>
+                              
                 
             </div>
         </div>
@@ -95,71 +79,22 @@ include(ROOT_PATH . '/app/controllers/topics.php');
     <div class="content clearfix">
         <!-- Main Content -->
         <div class="main-content">
-            <h1 class="recent-post-title">Recent Posts</h1>
+            <h1 class="recent-post-title"><?php echo $postsTitle; ?></h1>
+            <?php foreach($posts as $post): ?>
             <div class="post clearfix">
-                <img src="assets/images/images(3).jpg" alt="" class="post-image">
+                <img src="<?php echo BASE_URL . '/assets/images/' . $post['image'] ?>" alt="" class="post-image">
                 <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest songs yet remain to be sung</a></h2>
-                    <i class="far fa-user">Oluwafemi</i>
+                    <h2><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['tittle']; ?></a></h2>
+                    <i class="far fa-user"><?php echo $post['names']; ?></i>
                     &nbsp;
-                    <i class="far calender">Sep 5, 2020</i>
+                    <i class="far calender"><?php echo date('F j, Y', strtotime($post['creationDate'])); ?></i>
                     <p>
-                        <!-- God is the only  thing that dont come to the end. -->
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Exercitation optio possimus a inventore maxime laborum. naha iofa fanlf af aeo aio afof iohao ifoofh aff daavav vevrqe  ttr  y ene h e
+                      <?php echo html_entity_decode(substr($post['description'], 0, 150) . '...'); ?>
                     </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
+                    <a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Read More</a>
                 </div>
-            </div>
-
-
-            <div class="post clearfix">
-                <img src="assets/images/images(3).jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest songs yet remain to be sung</a></h2>
-                    <i class="far fa-user">Oluwafemi</i>
-                    &nbsp;
-                    <i class="far calender">Sep 5, 2020</i>
-                    <p>
-                        <!-- God is the only  thing that dont come to the end. -->
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Exercitation optio possimus a inventore maxime laborum.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
-
-            <div class="post clearfix">
-                <img src="assets/images/images(3).jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest songs yet remain to be sung</a></h2>
-                    <i class="far fa-user">Oluwafemi</i>
-                    &nbsp;
-                    <i class="far calender">Sep 5, 2020</i>
-                    <p>
-                        <!-- God is the only  thing that dont come to the end. -->
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Exercitation optio possimus a inventore maxime laborum.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
-
-            <div class="post clearfix">
-                <img src="assets/images/images(3).jpg" alt="" class="post-image">
-                <div class="post-preview">
-                    <h2><a href="single.php">The strongest and sweetest songs yet remain to be sung</a></h2>
-                    <i class="far fa-user">Oluwafemi</i>
-                    &nbsp;
-                    <i class="far calender">Sep 5, 2020</i>
-                    <p>
-                        <!-- God is the only  thing that dont come to the end. -->
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Exercitation optio possimus a inventore maxime laborum.
-                    </p>
-                    <a href="single.php" class="btn read-more">Read More</a>
-                </div>
-            </div>
+            </div>  
+            <?php endforeach; ?>     
 
         </div>
         <!-- Main Content -->
@@ -178,7 +113,7 @@ include(ROOT_PATH . '/app/controllers/topics.php');
 
                 <?php foreach ($topics as $key => $topic): ?>
                     
-                    <li><a href="#"><?php echo $topic['title']; ?></a></li>
+                    <li><a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id']. '&title=' . $topic['title']; ?>"><?php echo $topic['title']; ?></a></li>
                     <?php endforeach;?>                   
                 </ul>
             </div>

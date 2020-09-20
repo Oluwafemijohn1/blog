@@ -1,4 +1,7 @@
 <?php include("../../path.php"); ?>
+<?php include(ROOT_PATH . '/app/controllers/posts.php') ;
+adminOnly();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,19 +30,21 @@
     <!-- Admin content -->
     <div class="admin-content">
         <div class="buuton-group">
-            <a href="create.php" class="btn btn-big">Add Post</a>
+            <a href="edit.php" class="btn btn-big">Add Post</a>
             <a href="index.php" class="btn btn-big">Manage Posts</a>
         </div>
         <div class="content">
             <h2 class="page-title">Edit Post</h2>
-           <form action="create.php" method="post">
-               <div>
+            <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>
+           <form action="edit.php" method="post"  enctype="multipart/form-data">
+             <input type="hidden" name="id" value="<?php echo $id; ?>" >
+                <div>
                    <label for="">Title</label>
-                   <input type="text" name="title" id="" class="text-input">
+                   <input type="text" name="tittle" value="<?php echo $tittle; ?>" id="" class="text-input">
                </div>
                <div>
                     <label for="">Body</label>
-                    <textarea name="body" id="body" class="text-input"></textarea>
+                    <textarea name="description" id="description" class="text-input"><?php echo $description ?> </textarea>
                 </div>
                 <div>
                     <label for="">
@@ -48,15 +53,36 @@
                 </div>
                 <div>
                     <label for="">Topic</label>
-                    <select name="topic" id="" class="text-input">
-                        <option value="Poetry">Select topic</option>
-                        <option value="Poetry">Poetry</option>
-                        <option value="Tech">Tech</option>
-                        <option value="Life Lessons">Life Lessons</option>
+                    <select name="category" id="" class="text-input">
+                        <option value="">Select topic</option>
+                        <?php foreach ($topics as $key => $topic): ?>
+                            <?php if(!empty($category) && $category == $topic['id']): ?>
+                                <option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['title']; ?></option>
+                            <?php else: ?>
+                                <option value="<?php echo $topic['id']; ?>"><?php echo $topic['title']; ?></option>
+                            <?php endif; ?>
+                        
+                        <?php endforeach;?> 
+                        
+                   
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-big">Update Post</button>
+                    <?php if(empty($published) && $published = 0): ?>
+                        <label for="">
+                            <input type="checkbox" name="published" id="" class="">
+                            Publish
+                        </label>
+                    <?php else: ?>
+                        <label for="">
+                            <input type="checkbox" name="published" id="" class="" checked>
+                            Publish
+                        </label>
+                    <?php endif; ?>
+                    
+                </div>
+                <div>
+                    <button type="submit" name="update-post" class="btn btn-big">Update Post</button>
                 </div>
            </form>
         </div>

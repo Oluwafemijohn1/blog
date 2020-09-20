@@ -1,4 +1,16 @@
 <?php include("path.php"); ?>
+<?php 
+include( ROOT_PATH .  "/app/controllers/posts.php"); 
+if(isset($_GET['id'])){
+    $post = selectOne('b', ['id' => $_GET['id']]);
+}
+
+$posts = selectAll('b', ['published' => 1]);
+
+
+$topics = selectAll('c');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Candal&family=Lora&display=swap" rel="stylesheet">
     <!-- Custome Styling -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Sinlge Post</title>
+    <title><?php echo $post['tittle']; ?> | EPhemzyInspires</title>
 </head>
 <body>
     <!-- Facebook page plugin SDK -->
@@ -37,41 +49,10 @@
         <!-- Main Content  wrapper-->
         <div class="main-content-wrapper">
         <div class="main-content single">
-           <h1 class="post-title">THis is the title of the Post</h1> 
+           <h1 class="post-title"><?php echo $post['tittle']; ?></h1> 
            <div class="post-content">
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-               <p>nfnalam ana akava amads admas adma addnaoqvnvqvmv qvvnvmvvev qvmqvnav vva avav vvnav aav aafvoerv q avnavnavvva avanvav</p>
-               <p>dfnc acnvna an aana accdckac akcan ckcnanakna asnada dnas aas adoiwq  aocaqownq a\m\ clkca cacama aamca cacma ca</p>
-               <p>kvnaa calknan\ldcalclanac acnadcn cnasc accn\cav qc qncc ccck knlcl c n woncioqon ccn </p>
-               <p>njef invv na aska ana ana aoa aosma aodaposas aoma aopa viqq naoi\zmczczm;/\ campoc</p>
-           </div>
+           <?php echo html_entity_decode($post['description']); ?>
+            </div>
         </div>
         </div>
         <!-- //Main Content -->
@@ -81,39 +62,23 @@
             <div class="fb-page" data-href="https://web.facebook.com/Ephemzy-Venture-109202047102675" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/Ephemzy-Venture-109202047102675" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/Ephemzy-Venture-109202047102675">Ephemzy Venture</a></blockquote></div>
            <div class="section popular">
                <h2 class="section-title">Popular</h2>
-               <div class="post clearfix">
-                   <img src="assets/images/images(4).jpg" alt="">
-                   <a href="#" class="title"><h4>How to overcome your fears</h4></a>
+               <?php foreach ($posts as $p): ?>
+                <div class="post clearfix">
+                   <img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>" alt="">
+                   <a href="single.php?id=<?php echo $p['id']; ?>" class="title"><h4><?php echo $p['tittle']; ?></h4></a>
                </div>
-               <div class="post clearfix">
-                <img src="assets/images/images(4).jpg" alt="">
-                <a href="#" class="title"><h4>How to overcome your fears</h4></a>
-            </div>
-            <div class="post clearfix">
-                <img src="assets/images/images(4).jpg" alt="">
-                <a href="#" class="title"><h4>How to overcome your fears</h4></a>
-            </div>
-            <div class="post clearfix">
-                <img src="assets/images/images(4).jpg" alt="">
-                <a href="#" class="title"><h4>How to overcome your fears</h4></a>
-            </div>
-            <div class="post clearfix">
-                <img src="assets/images/images(4).jpg" alt="">
-               <a href="#" class="title"><h4>How to overcome your fears</h4></a>
-            </div>
+               <?php endforeach; ?>
+                             
             
-           </div>
+            </div>
             <div class="section topics">
                 <h2 class="section-title">Topics</h2>
                 <ul>
-                    <li><a href="#">Poems</a></li>
-                    <li><a href="#">Stories</a></li>
-                    <li><a href="#">Tech</a></li>
-                    <li><a href="#">Fictions</a></li>
-                    <li><a href="#">Biography</a></li>
-                    <li><a href="#">Motivstions</a></li>
-                    <li><a href="#">Inspiration</a></li>
-                    <li><a href="#">Life Lessons</a></li>
+                <?php foreach ($topics as $topic): ?>
+                    <li><a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id']. '&title=' . $topic['title']; ?>"><?php echo $topic['title']; ?></a></li>
+                <?php endforeach; ?>
+                    
+                   
                 </ul>
             </div>
         </div>

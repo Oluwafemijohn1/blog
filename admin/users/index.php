@@ -1,4 +1,10 @@
-<?php include("../../path.php"); ?>
+<?php 
+include("../../path.php"); 
+include(ROOT_PATH . '/app/controllers/users.php');
+
+adminOnly();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,30 +38,25 @@
         </div>
         <div class="content">
             <h2 class="page-title">Manage Users</h2>
+            <?PHP include(ROOT_PATH."/app/include/messages.php"); ?>
             <table>
                 <thead>
                     <th>SN</th>
                     <th>Username</th>
-                    <th>Admin</th>
+                    <th>Email address</th>
                     <th colspan="2">Action</th>
                 </thead>
                 <tbody>
+                    <?php foreach ($admin_users as $key => $user): ?>
                     <tr>
-                        <td>1</td>
-                        <td>Ephemzy</td>
-                        <td>Role</td>
-                        <td><a href="#" class="edit">Edit</a></td>
-                        <td><a href="#" class="delete">Delete</a</td>
+                        <td><?php echo $key + 1; ?></td>
+                        <td><?php echo $user['names']; ?></td>
+                        <td><?php echo $user['email']; ?></td>
+                        <td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">Edit</a></td>
+                        <td><a href="index.php?delete_id=<?php echo $user['id']; ?>" class="delete">Delete</a</td>
                         
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>John</td>
-                        <td>Author</td>
-                        <td><a href="#" class="edit">Edit</a></td>
-                        <td><a href="#" class="delete">Delete</a</td>
-                        
-                    </tr>
+                    <?php endforeach; ?>
                      
                 </tbody>
             </table>

@@ -1,5 +1,7 @@
 <?php include("../../path.php"); ?>
-<?php include(ROOT_PATH . '/app/controllers/posts.php') ?>
+<?php include(ROOT_PATH . '/app/controllers/posts.php') ;
+adminOnly();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +36,7 @@
         <div class="content">
             <h2 class="page-title">Add Post</h2>
             <?php include(ROOT_PATH . '/app/helpers/formErrors.php'); ?>
-           <form action="create.php" method="post">
+           <form action="create.php" method="post" enctype="multipart/form-data">
                <div>
                    <label for="">Title</label>
                    <input type="text" name="tittle" value="<?php echo $tittle; ?>" id="" class="text-input">
@@ -53,7 +55,7 @@
                     <select name="category" id="" class="text-input">
                         <option value="">Select topic</option>
                         <?php foreach ($topics as $key => $topic): ?>
-                            <?php if(!empty($topic_id) && $topic_id == $topic['id']): ?>
+                            <?php if(!empty($category) && $category == $topic['id']): ?>
                                 <option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['title']; ?></option>
                             <?php else: ?>
                                 <option value="<?php echo $topic['id']; ?>"><?php echo $topic['title']; ?></option>

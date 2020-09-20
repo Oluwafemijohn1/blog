@@ -15,9 +15,14 @@
                     <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
                 </a>
                 <ul>
-                    <?php if($_SESSION['isAdmin']): ?>
+                    <!-- <?php //if($_SESSION['isAdmin']): ?>
+                        <li><a href="<?php //echo BASE_URL . '/admin/dashboard.php' ?>">Dashboard</a></li>
+                    <?php //endif; ?>
+                    <li><a href="<?php //echo BASE_URL . '/logout.php' ?>" class="logout">Logout</a></li>   -->
+
+                    
                         <li><a href="<?php echo BASE_URL . '/admin/dashboard.php' ?>">Dashboard</a></li>
-                    <?php endif; ?>
+                   
                     <li><a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout">Logout</a></li>  
                 </ul>
                           

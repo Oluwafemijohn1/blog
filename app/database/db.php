@@ -128,4 +128,43 @@ function delete($table, $id)
     return $stmt->affected_rows; 
 }
 
+function getPublishedPost(){
+    global $conn;
+    //SELECT * FROM posts WHERE published=1
+
+    $sql ="SELECT po.*, us.names FROM b AS po JOIN u AS us ON po.userId=us.id WHERE po.published = ?";
+    $stmt = executeQuery($sql, ['published' => 1]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+}
+
+function getPostsByTopicId($category){
+    global $conn;
+    //SELECT * FROM posts WHERE published=1
+
+    $sql ="SELECT po.*, us.names FROM b AS po JOIN u AS us ON po.userId=us.id WHERE po.published = ? AND category=?";
+    $stmt = executeQuery($sql, ['published' => 1, 'category' => $category]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+}
+
+function searchPosts($term){
+    $match = '%' . $term . '%';
+    global $conn;
+    //SELECT * FROM posts WHERE published=1
+
+    $sql ="SELECT 
+                po.*, us.names 
+            FROM b AS po 
+            JOIN u AS us 
+            ON po.userId=us.id 
+            WHERE po.published = ?
+            AND po.tittle LIKE ? OR po.description LIKE ?";
+    $stmt = executeQuery($sql, ['published' => 1, 'tittle' => $match, 'description' => $match]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+}
+
+
+
 

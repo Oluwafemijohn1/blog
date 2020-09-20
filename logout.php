@@ -12,4 +12,4 @@ unset($_SESSION['UpdationDate']);
 
 session_destroy();
 
-header('location:' . BASE_URL . '/login.php');
+header('location:' . BASE_URL . '/index.php');
